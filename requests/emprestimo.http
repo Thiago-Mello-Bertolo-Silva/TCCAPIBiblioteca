@@ -1,0 +1,32 @@
+POST http://localhost:3000/emprestimo
+Content-Type: application/json
+
+{
+  "livroId": 1,
+  "usuarioId": 1,
+  "dataInicio": "2025-04-26",
+  "dataPrevistoDevolucao": "2025-05-10",
+  "status": "emprestado"
+}
+
+###
+
+GET http://localhost:3000/emprestimos
+
+###
+
+GET http://localhost:3000/emprestimo/1
+
+###
+
+PUT http://localhost:3000/emprestimo/1
+Content-Type: application/json
+
+{
+  "status": "devolvido",
+  "dataDevolucaoEfetiva": "2025-04-28"
+}
+
+###
+
+DELETE http://localhost:3000/emprestimo/2

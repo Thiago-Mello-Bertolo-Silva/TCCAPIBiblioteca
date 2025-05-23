@@ -1,0 +1,31 @@
+POST http://localhost:3000/usuario
+Content-Type: application/json
+
+{
+  "cargo": "usuario",
+  "nome": "Maria Teste",
+  "email": "maria@teste.com",
+  "telefone": "13999999999",
+  "senha": "senha123"
+}
+
+###
+
+GET http://localhost:3000/usuarios
+
+###
+
+GET http://localhost:3000/usuario/3
+
+###
+
+PUT http://localhost:3000/usuario/3
+Content-Type: application/json
+
+{
+  "telefone": "(13)12354-1232"
+}
+
+###
+
+DELETE http://localhost:3000/usuario/6

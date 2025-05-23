@@ -1,0 +1,35 @@
+POST http://localhost:3000/livro
+Content-Type: application/json
+
+{
+  "titulo": "Introdução à Programação com Python",
+  "autores": "Oliveira", 
+  "editora": "Editora Oi",
+  "anoPublicacao": 2020,
+  "edicao": "1ª",
+  "linkOnline": "Sim, https://exemplo.com/livro/python",
+  "disponivel": "Não"
+}
+
+###
+
+GET http://localhost:3000/livros
+
+###
+
+GET http://localhost:3000/livro/2
+
+###
+
+PUT http://localhost:3000/livro/1
+Content-Type: application/json
+
+{
+  "editora": "Editora Técnica Atualizada",
+  "edicao": "4ª",
+  "disponivel": "Não"
+}
+
+###
+
+DELETE http://localhost:3000/livro/2

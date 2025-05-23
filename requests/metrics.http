@@ -1,0 +1,15 @@
+GET http://localhost:3000/dashboard-metrics
+
+###
+
+POST http://localhost:3000/dashboard-metrics
+Content-Type: application/json
+
+{
+  "totalLivros": 1250,
+  "totalUsuarios": 387,
+  "livrosEmprestados": 214,
+  "usuariosOnline": 36
+}
+
+###
