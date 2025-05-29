@@ -35,6 +35,5 @@ const Usuario = database.define('usuario', {
   tableName: 'usuarios'
 })
 
-Usuario.hasMany(Emprestimo, { foreignKey: 'usuarioId' });
 
 export default Usuario

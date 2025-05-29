@@ -8,16 +8,20 @@ const Emprestimo = database.define('emprestimo', {
     primaryKey: true,
     allowNull: false
   },
-  livroId: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
   usuarioId: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  dataEmprestimo: {
-    type: Sequelize.DATE,
+  livroId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  dataInicio: {
+    type: Sequelize.DATEONLY,
+    allowNull: false
+  },
+  dataPrevistoDevolucao: {
+    type: Sequelize.DATEONLY,
     allowNull: false
   },
   status: {
@@ -26,7 +30,7 @@ const Emprestimo = database.define('emprestimo', {
     defaultValue: 'Pendente'
   }
 }, {
-  tableName: 'emprestimos'
+  tableName: 'emprestimos',
 });
 
 export default Emprestimo;

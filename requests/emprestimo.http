@@ -15,7 +15,7 @@ GET http://localhost:3000/emprestimos
 
 ###
 
-GET http://localhost:3000/emprestimo/1
+GET http://localhost:3000/emprestimo/13
 
 ###
 

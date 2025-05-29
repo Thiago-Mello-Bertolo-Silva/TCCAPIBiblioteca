@@ -9,11 +9,11 @@ async function createEmprestimo(req, res) {
     usuarioId,
     livroId,
     dataInicio,
-    dataEmprestimo,
+    dataPrevistoDevolucao,
     status
   } = req.body;
 
-  if (!usuarioId || !livroId || !dataInicio || !dataEmprestimo || !status) {
+  if (!usuarioId || !livroId || !dataInicio || !dataPrevistoDevolucao || !status) {
     return res.status(400).json({ error: 'Campos obrigatórios faltando.' });
   }
 
@@ -22,7 +22,7 @@ async function createEmprestimo(req, res) {
       usuarioId,
       livroId,
       dataInicio,
-      dataEmprestimo,
+      dataPrevistoDevolucao,
       status
     });
 
@@ -37,6 +37,14 @@ async function createEmprestimo(req, res) {
 async function getEmprestimos(req, res) {
   try {
     const emprestimos = await Emprestimo.findAll({
+      attributes: [
+        'id',
+        'usuarioId',
+        'livroId',
+        'dataInicio',
+        'dataPrevistoDevolucao',
+        'status'
+      ],
       include: [
         {
           model: Usuario,
@@ -90,7 +98,7 @@ async function updateEmprestimo(req, res) {
     usuarioId,
     livroId,
     dataInicio,
-    dataEmprestimo,
+    dataPrevistoDevolucao,
     status,
   } = req.body;
 
@@ -103,7 +111,7 @@ async function updateEmprestimo(req, res) {
       usuarioId,
       livroId,
       dataInicio,
-      dataEmprestimo,
+      dataPrevistoDevolucao,
       status
     });
 
@@ -123,7 +131,9 @@ async function deleteEmprestimo(req, res) {
       return res.status(404).json({ error: 'Empréstimo não encontrado' });
     }
 
-    await emprestimo.destroy();
+    // Use a função do service que também atualiza o status do livro
+    await emprestimosService.deletarEmprestimo(id);
+
     res.json({ message: 'Empréstimo excluído com sucesso' });
   } catch (error) {
     res.status(500).json({ error: 'Erro ao excluir empréstimo: ' + error.message });

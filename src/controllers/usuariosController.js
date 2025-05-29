@@ -144,7 +144,7 @@ async function getUserById(req, res) {
 
 async function updateUser(req, res) {
     const { id } = req.params;
-    const { nome, email, telefone, senha } = req.body;
+    const { nome, email, telefone, senha, cargo } = req.body; 
 
     try {
         const user = await Usuario.findByPk(id);
@@ -156,6 +156,7 @@ async function updateUser(req, res) {
         if (email) user.email = email;
         if (telefone) user.telefone = telefone;
         if (senha) user.senha = senha;
+        if (cargo) user.cargo = cargo;
 
         await user.save();
         res.json(user);
