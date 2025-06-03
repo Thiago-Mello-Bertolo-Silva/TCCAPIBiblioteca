@@ -10,7 +10,7 @@ import router from './src/routes/router.js';
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173", // Substitua pelo domínio real do frontend em produção
+  origin: "https://ro4ookggskcwc0g840k0sc84.212.85.1.115.sslip.io", // Substitua pelo domínio real do frontend em produção
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
