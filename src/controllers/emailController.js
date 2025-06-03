@@ -18,7 +18,7 @@ export const enviarEmailCadastro = async (req, res) => {
     );
 
     // Link de confirmação com token apontando para o BACKEND
-    const confirmLink = `${process.env.BACKEND_URL}/confirmar/${token}`;
+    const confirmLink = `${process.env.FRONTEND_URL}/confirmar/${token}`;
 
     // Configurar transportador
     const transporter = nodemailer.createTransport({
