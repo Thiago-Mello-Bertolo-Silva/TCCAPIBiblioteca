@@ -5,7 +5,7 @@ const JWT_SECRET = 'sua_chave_secreta'; // Idealmente use process.env.JWT_SECRET
 
 async function sendConfirmationEmail({ to, nome, email, telefone, senha }) {
   const token = jwt.sign({ nome, email, telefone, senha }, JWT_SECRET, { expiresIn: '1d' });
-  const confirmLink = `http://localhost:3001/confirmar/${token}`; // backend confirmador
+  const confirmLink = `https://s44w4okwc8k0swgwkks0kcw0.212.85.1.115.sslip.io/confirmar/${token}`; // backend confirmador
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
