@@ -34,7 +34,7 @@ const confirmacaoController = {
       await usuariosController.createUserDireto({ nome, email, telefone, senha });
 
       // Redireciona com mensagem de sucesso
-      return res.redirect('http://localhost:5173/?cadastro=sucesso');
+      return res.redirect(process.env.FRONTEND_URL || 'http://localhost:5173/?cadastro=sucesso');
     } catch (error) {
       console.error('Erro ao confirmar cadastro:', error);
       return res.status(500).send('Erro interno ao confirmar cadastro.');
