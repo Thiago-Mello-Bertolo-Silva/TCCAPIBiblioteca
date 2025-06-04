@@ -1,5 +1,5 @@
-import Emprestimo from '../models/Emprestimo.js';
 import emprestimosService from '../services/emprestimosService.js';
+import Emprestimo from '../models/Emprestimo.js';
 import Usuario from '../models/Usuario.js';
 import Livro from '../models/Livro.js';
 
