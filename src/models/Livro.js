@@ -12,6 +12,10 @@ const Livro = database.define('livro', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  categorias: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
   autores: {
     type: Sequelize.STRING,
     allowNull: false
@@ -36,7 +40,7 @@ const Livro = database.define('livro', {
     type: Sequelize.STRING,
     allowNull: false,
     defaultValue: 'Sim'
-  }
+  },
 }, {
   tableName: 'livros'
 });

@@ -2,8 +2,8 @@ POST http://localhost:3000/emprestimo
 Content-Type: application/json
 
 {
-  "livroId": 1,
-  "usuarioId": 1,
+  "livroId": 6,
+  "usuarioId": 7,
   "dataInicio": "2025-04-26",
   "dataPrevistoDevolucao": "2025-05-10",
   "status": "emprestado"

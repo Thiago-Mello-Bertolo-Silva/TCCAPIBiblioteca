@@ -4,6 +4,7 @@ import Livro from '../models/Livro.js';
 async function createLivro(req, res) {
   const {
     titulo,
+    categorias,
     autores,
     editora,
     anoPublicacao,
@@ -12,13 +13,14 @@ async function createLivro(req, res) {
     disponivel
   } = req.body;
 
-  if (!titulo || !autores || !editora || !anoPublicacao || !edicao || !disponivel) {
+  if (!titulo || !categorias || !autores || !editora || !anoPublicacao || !edicao || !disponivel) {
     return res.status(400).json({ error: 'Campos obrigatórios faltando.' });
   }
 
   try {
     const novoLivro = await Livro.create({
       titulo,
+      categorias,
       autores,
       editora,
       anoPublicacao,
@@ -65,6 +67,7 @@ async function updateLivro(req, res) {
   const { id } = req.params;
   const {
     titulo,
+    categorias,
     autores,
     editora,
     anoPublicacao,
@@ -80,6 +83,7 @@ async function updateLivro(req, res) {
     }
 
     if (titulo) livro.titulo = titulo;
+    if (categorias) livro.categorias = categorias;
     if (autores) livro.autores = autores;
     if (editora) livro.editora = editora;
     if (anoPublicacao) livro.anoPublicacao = anoPublicacao;

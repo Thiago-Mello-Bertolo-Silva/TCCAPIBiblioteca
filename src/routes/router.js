@@ -7,10 +7,13 @@ import { enviarEmailCadastro } from '../controllers/emailController.js';
 import enviarEmailRecuperacao from '../controllers/enviarEmailRecuperacao.js';
 import authService from '../services/authService.js';
 import dashboardMetricsController from '../controllers/metricsController.js';
-import { livrosPorMes } from '../controllers/dashboardController.js';
+import { livrosPorEditora, livrosPorAutores } from '../controllers/dashboardController.js';
 import usuariosController from '../controllers/usuariosController.js';
 import livrosController from '../controllers/livrosController.js';
 import emprestimosController from '../controllers/emprestimosController.js'; 
+import verificarToken from '../middlewares/verificarToken.js';
+import { enviarFeedback } from "../controllers/feedbackController.js";
+import { verificarNotificacoes } from "../controllers/notificacaoController.js"
 
 
 // Envio de e-mail e confirmação
@@ -43,13 +46,21 @@ router.delete('/livro/:id', livrosController.deleteLivro);
 router.post('/emprestimo', emprestimosController.createEmprestimo);
 router.get('/emprestimos', emprestimosController.getEmprestimos);
 router.get('/emprestimo/:id', emprestimosController.getEmprestimoById);
+router.get('/meus-emprestimos/ativos', verificarToken, emprestimosController.getEmprestimosAtivosByUsuario);
+router.get('/meus-emprestimos/ultimo', verificarToken, emprestimosController.getUltimoEmprestimoByUsuario);
 router.put('/emprestimo/:id', emprestimosController.updateEmprestimo);
 router.delete('/emprestimo/:id', emprestimosController.deleteEmprestimo);
 
 // Tabela de dados
 router.get('/dashboard-metrics', dashboardMetricsController.getDashboardMetrics);
-router.get('/infracoes-chart-data', dashboardMetricsController.getInfracoesChartData);
+router.get('/meus-emprestimos', verificarToken, emprestimosController.getEmprestimosDoUsuario);
+router.get('/livros-por-editora', livrosPorEditora);
+router.get('/livros-por-autores', livrosPorAutores);
 
-router.get('/livros-por-mes', livrosPorMes);
+// Rota da mensagem de feedback
+router.post('/enviar-feedback', enviarFeedback)
+
+// Rota de notificação
+router.get('/notificacoes/:id', verificarNotificacoes)
 
 export default router;

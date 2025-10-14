@@ -41,20 +41,24 @@ function checaToken(req, res, next) {
 }
 
 function pegarUsuarioDoToken(req, res) {
-    const authHeader = req.headers.authorization;
+  const authHeader = req.headers.authorization;
 
-    if (!authHeader) {
-        return res.status(403).json({ message: 'Forbidden' });
-    }
+  if (!authHeader) {
+    return res.status(403).json({ message: 'Forbidden' });
+  }
 
-    const [, token] = authHeader.split(' ');
+  const [, token] = authHeader.split(' ');
 
-    if (!token) {
-        return res.status(403).json({ message: 'Forbidden' });
-    }
+  if (!token) {
+    return res.status(403).json({ message: 'Forbidden' });
+  }
 
-    const usuarioDoToken = jwt.decode(token);
+  try {
+    const usuarioDoToken = jwt.verify(token, process.env.JWT_SECRET);
     res.json(usuarioDoToken);
+  } catch (error) {
+    res.status(401).json({ message: 'Token inválido ou expirado' });
+  }
 }
 
 export default {

@@ -85,16 +85,27 @@ async function atualizarEmprestimo(id, dadosAtualizados) {
 
   const livroIdAntes = emprestimo.livroId;
 
+  const statusAnterior = emprestimo.status;
+  const statusNovo = dadosAtualizados.status ?? emprestimo.status;
+
+  // Atualiza os campos
   await emprestimo.update({
     usuarioId: dadosAtualizados.usuarioId ?? emprestimo.usuarioId,
     livroId: dadosAtualizados.livroId ?? emprestimo.livroId,
     dataInicio: dadosAtualizados.dataInicio ?? emprestimo.dataInicio,
     dataPrevistoDevolucao: dadosAtualizados.dataPrevistoDevolucao ?? emprestimo.dataPrevistoDevolucao,
-    status: dadosAtualizados.status ?? emprestimo.status,
+    status: statusNovo,
   });
 
-  // Verifica disponibilidade do livro anterior
-  await verificarEAtualizarDisponibilidade(livroIdAntes);
+  // Verifica se o status mudou para "Devolvido"
+  if (statusNovo === 'devolvido') {
+    await atualizarDisponibilidadeLivro(emprestimo.livroId, 'Sim');
+  }
+
+  // Verifica disponibilidade do livro anterior (caso o livro tenha sido alterado no update)
+  if (emprestimo.livroId !== livroIdAntes) {
+    await verificarEAtualizarDisponibilidade(livroIdAntes);
+  }
 
   return emprestimo;
 }

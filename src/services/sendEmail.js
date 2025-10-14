@@ -10,13 +10,13 @@ async function sendConfirmationEmail({ to, nome, email, telefone, senha }) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'seuemail@gmail.com',
-      pass: 'sua-senha-ou-app-pass',
+      user: 'bibliotecadoppge@gmail.com',
+      pass: 'jofb wavf gwjj svgb',
     },
   });
 
   const mailOptions = {
-    from: '"Biblioteca Virtual" <seuemail@gmail.com>',
+    from: '"Biblioteca Virtual" <bibliotecadoppge@gmail.com>',
     to,
     subject: 'Confirme seu cadastro',
     html: `

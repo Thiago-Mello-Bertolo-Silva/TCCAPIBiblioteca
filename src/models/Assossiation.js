@@ -10,4 +10,7 @@ Emprestimo.belongsTo(Usuario, { foreignKey: 'usuarioId' });
 Livro.hasMany(Emprestimo, { foreignKey: 'livroId' });
 Emprestimo.belongsTo(Livro, { foreignKey: 'livroId' });
 
+Emprestimo.belongsTo(Usuario, { foreignKey: 'usuarioId' });
+Emprestimo.belongsTo(Livro, { foreignKey: 'livroId', as: 'Livro' });
+
 export { Usuario, Livro, Emprestimo };

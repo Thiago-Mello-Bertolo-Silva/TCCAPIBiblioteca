@@ -4,6 +4,7 @@ import cors from 'cors';
 
 dotenv.config();
 
+import './src/services/notificacoesJob.js'
 import './src/models/Assossiation.js';
 import router from './src/routes/router.js';
 

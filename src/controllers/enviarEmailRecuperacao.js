@@ -40,7 +40,7 @@ const enviarEmailRecuperacao = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_FROM,
       to: email,
-      subject: 'Recuperação de Senha - Biblioteca Digital Universitária',
+      subject: 'Recuperação de Senha - Biblioteca do PPGE',
       html: `
         <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
           <h2>Olá, ${usuario.nome}!</h2>

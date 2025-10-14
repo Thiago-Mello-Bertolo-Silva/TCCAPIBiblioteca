@@ -3,9 +3,9 @@ Content-Type: application/json
 
 {
   "cargo": "usuario",
-  "nome": "Maria Teste",
-  "email": "maria@teste.com",
-  "telefone": "13999999999",
+  "nome": "Luigi",
+  "email": "luigi@teste.com",
+  "telefone": "(13)99751-4567",
   "senha": "senha123"
 }
 
@@ -28,4 +28,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/usuario/6
+DELETE http://localhost:3000/usuario/11

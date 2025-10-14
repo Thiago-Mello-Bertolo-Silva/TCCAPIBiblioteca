@@ -32,12 +32,12 @@ export const enviarEmailCadastro = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_FROM,
       to: email,
-      subject: 'Confirmação de Cadastro - Biblioteca Digital Universitária',
+      subject: 'Confirmação de Cadastro - Biblioteca do PPGE',
       html: `
         <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
           <h2>Olá, ${nome}!</h2>
           <p>
-            Muito obrigado por se cadastrar na <strong>Biblioteca Digital Universitária</strong>! ☁️📚
+            Muito obrigado por se cadastrar na <strong>Biblioteca do PPGE</strong>! ☁️📚
           </p>
           <p>
             Nosso objetivo é simples: oferecer a você acesso rápido, fácil e confiável a um vasto acervo de livros,
